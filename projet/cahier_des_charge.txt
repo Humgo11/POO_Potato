@@ -1,0 +1,46 @@
+
+
+
+Nom projet : POTATO
+idee provenant de brotato: https://store.steampowered.com/app/1942280/Brotato/
+
+
+Le But du jeu:
+Un personnage devra survivre à des vagues d'ennemis de plus en plus puissantes.
+A chaque vagues les ennemis auront plus de vie et feront plus de degats
+des mobs réapparaissent jusqu'à ce que le timeur de la vague soit écoulé
+ou que le joueuer n'a plus de vie
+
+Si on a le temps:
+Pour contrebalancer cela le nombre d'ennemi tué rapportera de l'XP au 
+joueur qui pourra alors améliorer son équipement (defense, attaque)
+par l'achat d'objets et armes
+
+-------------
+Jouabilité:
+- multijoueur(jamais de la vie) + 
+- manette pour plus de maniabilité dans les commandes
+
+
+
+Les DEVS :
+Quentin, Hugo, Felix, Gaetan
+
+
+
+Répartitions des taches:
+
+-Creation des textures
+
+-Creation du jeu
+
+
+
+!!! REGLES COMMIT !!!
+Un COMMIT sans commentaires / non comprehensible ne sera pas accepté
+Il faut commit un code seulemnt si on est sur qu'il marche et qu'il n'y aura pas
+de probleme en l'implémentant au code principal
+
+
+
+
