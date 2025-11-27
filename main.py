@@ -67,7 +67,7 @@ class Player: #classe qui cree le joueur
             return False
         
     def draw_health(self):
-       """affiche le nb de coeur restant en haut à gauche"""
+       """affiche le nb de coeur restant en haut à gauche """
        for i in range(self.vie):
            pyxel.rect(8*i, 0, 8, 8, 1+i)
            # pyxel.blt(x, y, img, u, v, w, h)
