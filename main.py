@@ -90,3 +90,39 @@ class Player: #classe qui cree le joueur
 
     def draw(self):
         pyxel.rect(self.x,self.y,5,5,6)
+        self.draw_health()
+
+    def draw_health(self):
+       """affiche le nb de coeur restant en haut à gauche """
+       for i in range(self.vie):
+           pyxel.rect(8*i, 0, 8, 8, 1+i)
+           # pyxel.blt(x, y, img, u, v, w, h)
+    
+        # pyxel.rectb(0, 0, 32, 8, 2)#barre de vie sous forme de barre de vie
+        # pyxel.rect(1, 1, 30, 6, 3)
+
+
+
+
+class Mob:
+    def __init__(self, life, damage, attack_speed, speed):
+        """initialisation de la creation de mob"""
+        self.life = life
+        self.damage = damage
+        self.attack_speed = attack_speed
+        self.speed = speed
+    
+    def update(self):
+        pass
+    
+    def draw(self):
+        pass
+    
+    def degat(self):
+        """change la vie du mob"""
+        pass
+
+
+
+
+Game(128,128,"JEU")
