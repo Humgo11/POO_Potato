@@ -28,7 +28,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
 
         else:#si le joueur est mort
-            print(self.player.nom, "est mort")
+            print(self.player.nom, "est mort...")
 
         
 
