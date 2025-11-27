@@ -20,7 +20,8 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         
         if self.player.is_alive(): # boucle du jeu qui verifie si le joueur est mort
             #ici si le player est vivant
-            pass #mettre la suite du jeu ici
+            #mettre la suite du jeu ici
+            self.player.move()
 
 
 
@@ -31,7 +32,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
     def draw(self):
         pyxel.cls(0)
-        pass
+        self.player.draw()
 
 
 
@@ -43,6 +44,37 @@ class Player: #classe qui cree le joueur
         self.defense = 0
         self.attaque = 1
         self.vie = 4 #vie initiale
+        self.vitesse = 1 #vitesse de deplacement 
+
+    def move(self):
+        """déplacement avec les touches de direction"""
+        
+        if pyxel.btn(pyxel.KEY_RIGHT):
+            
+            if (self.x < 120) :
+                self.x = self.x + self.vitesse
+
+        if pyxel.btn(pyxel.KEY_LEFT):
+            if (self.x > 0) :
+                self.x = self.x - self.vitesse
+                
+
+        if pyxel.btn(pyxel.KEY_DOWN):
+            if (self.y < 120) :
+                self.y = self.y + self.vitesse
+        if pyxel.btn(pyxel.KEY_UP):
+            if (self.y > 0) :
+                self.y = self.y - self.vitesse
+
+        
+
+        
+
+        if pyxel.btnp(pyxel.KEY_SPACE):     # si la touche "ESPACE" a été appuyée :
+            return self.x + 4, self.y - 2, "missile"  # on signale un nouveau tir en renvoyant les coordonnées du vaisseau.
+        if pyxel.btnp(pyxel.KEY_B):
+            return self.x +4, self.y - 2, "bombe"
+        return None                         # Si on renvoie None, c'est qu'aucun nouveau tir n'a été déclenché.
 
 
     def degats(self,nb_degats):
@@ -63,6 +95,8 @@ class Player: #classe qui cree le joueur
         else:
             return False
 
+    def draw(self):
+        pyxel.rect(self.x,self.y,5,5,6)
 
 
 
