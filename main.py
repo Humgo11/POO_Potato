@@ -70,11 +70,7 @@ class Player: #classe qui cree le joueur
 
         
 
-        if pyxel.btnp(pyxel.KEY_SPACE):     # si la touche "ESPACE" a été appuyée :
-            return self.x + 4, self.y - 2, "missile"  # on signale un nouveau tir en renvoyant les coordonnées du vaisseau.
-        if pyxel.btnp(pyxel.KEY_B):
-            return self.x +4, self.y - 2, "bombe"
-        return None                         # Si on renvoie None, c'est qu'aucun nouveau tir n'a été déclenché.
+        
 
 
     def degats(self,nb_degats):
