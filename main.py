@@ -35,12 +35,9 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
     def draw(self):
         pyxel.cls(0)
-<<<<<<< HEAD
-        
-        
-=======
+
         self.player.draw()
->>>>>>> 663ffb2956f079eca68c67b78ee00ce0c19592ac
+
 
 
 
@@ -113,7 +110,7 @@ class Player: #classe qui cree le joueur
     def draw(self):
         pass
 
-<<<<<<< HEAD
+
 class Mob:
     def __init__(self, life, damage, attack_speed, speed):
         """initialisation de la creation de mob"""
@@ -131,13 +128,14 @@ class Mob:
     def degat(self):
         """change la vie du mob"""
         pass
-=======
+
     def draw(self):
         pyxel.rect(self.x,self.y,5,5,6)
 
 
 
->>>>>>> 663ffb2956f079eca68c67b78ee00ce0c19592ac
+
+
 
 
 
