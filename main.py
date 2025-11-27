@@ -36,7 +36,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 class Player: #classe qui cree le joueur
     def __init__(self,nom):
         self.nom = nom
-        self.x = pyxel.width//2 -2
+        self.x = pyxel.width//2 -2 #faire spawn le perso au milieu de l'écran
         self.y = pyxel.height//2 -2
         self.defense = 0
         self.attaque = 1
