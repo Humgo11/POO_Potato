@@ -1,5 +1,6 @@
 
 
+
 Nom projet : POTATO
 idee provenant de brotato: https://store.steampowered.com/app/1942280/Brotato/
 
@@ -10,8 +11,6 @@ A chaque vagues les ennemis auront plus de vie et feront plus de degats
 des mobs réapparaissent jusqu'à ce que le timeur de la vague soit écoulé
 ou que le joueuer n'a plus de vie
 
-
-
 Si on a le temps:
 Pour contrebalancer cela le nombre d'ennemi tué rapportera de l'XP au 
 joueur qui pourra alors améliorer son équipement (defense, attaque)
@@ -20,7 +19,7 @@ par l'achat d'objets et armes
 -------------
 Jouabilité:
 - multijoueur(jamais de la vie) + 
-- manette pour plus de maniabilité dans les commandes
+- manette pour plus de maniabilité dans les commandes (bonus)
 
 
 
@@ -31,10 +30,11 @@ Quentin, Hugo, Felix, Gaetan
 
 Répartitions des taches:
 
--Creation des textures
-
--Creation du jeu
-
+-Creation des textures : ennemis, player,sol,balles,pv,
+-Créations sons
+-Création rooms des vagues
+-Création ennemis
+-Création menus 
 
 
 !!! REGLES COMMIT !!!
