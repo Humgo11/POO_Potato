@@ -19,7 +19,7 @@ par l'achat d'objets et armes
 -------------
 Jouabilité:
 - multijoueur(jamais de la vie) + 
-- manette pour plus de maniabilité dans les commandes
+- manette pour plus de maniabilité dans les commandes (bonus)
 
 
 
@@ -30,10 +30,11 @@ Quentin, Hugo, Felix, Gaetan
 
 Répartitions des taches:
 
--Creation des textures
-
--Creation du jeu
-
+-Creation des textures : ennemis, player,sol,balles,pv,
+-Créations sons
+-Création rooms des vagues
+-Création ennemis
+-Création menus 
 
 
 !!! REGLES COMMIT !!!
