@@ -6,12 +6,10 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         self.width = width
         self.height = height
         self.nom = nom_jeu
-        self.player = Player("JOUEUR1")
-        self.x = 0
-        self.y = 0
+        
 
         pyxel.init(self.width, self.height)
-        
+        self.player = Player("JOUEUR1")
         pyxel.run(self.update, self.draw)
         
 
@@ -38,8 +36,8 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 class Player: #classe qui cree le joueur
     def __init__(self,nom):
         self.nom = nom
-        self.x = 0
-        self.y = 0
+        self.x = pyxel.width//2 -2
+        self.y = pyxel.height//2 -2
         self.defense = 0
         self.attaque = 1
         self.vie = 4 #vie initiale
@@ -50,7 +48,7 @@ class Player: #classe qui cree le joueur
         
         if pyxel.btn(pyxel.KEY_RIGHT):
             
-            if (self.x < 120) :
+            if (self.x < pyxel.width-5) :#eviter de sortir de l'écran
                 self.x = self.x + self.vitesse
 
         if pyxel.btn(pyxel.KEY_LEFT):
@@ -59,10 +57,10 @@ class Player: #classe qui cree le joueur
                 
 
         if pyxel.btn(pyxel.KEY_DOWN):
-            if (self.y < 120) :
+            if (self.y < pyxel.height-5) :
                 self.y = self.y + self.vitesse
         if pyxel.btn(pyxel.KEY_UP):
-            if (self.y > 0) :
+            if (self.y > 0) : 
                 self.y = self.y - self.vitesse
 
         
