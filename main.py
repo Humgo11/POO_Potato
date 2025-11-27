@@ -31,10 +31,10 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
             print(self.player.nom, "est mort...")
 
         
-
+        
     def draw(self):
         pyxel.cls(0)
-        
+        self.player.draw()
         
 
 
@@ -68,14 +68,19 @@ class Player: #classe qui cree le joueur
             return False
         
     def draw_health(self):
-        for i in range(self.vie):
-            pyxel.rect(8*i, 0, 8, 8, 1+i)
-            # pyxel.blt(x, y, img, u, v, w, h)
+       """affiche le nb de coeur restant en haut à gauche"""
+       for i in range(self.vie):
+           pyxel.rect(8*i, 0, 8, 8, 1+i)
+           # pyxel.blt(x, y, img, u, v, w, h)
+    
+        # pyxel.rectb(0, 0, 32, 8, 2)#barre de vie sous forme de barre de vie
+        # pyxel.rect(1, 1, 30, 6, 3)
         
-        
+    def update(self):
+        pass
         
     def draw(self):
-        pass
+        self.draw_health()
 
 class Mob:
     def __init__(self, life, damage, attack_speed, speed):
