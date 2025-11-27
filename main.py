@@ -1,4 +1,3 @@
-
 import pyxel
 
 
@@ -115,6 +114,3 @@ class Player: #classe qui cree le joueur
 
 
 Game(128,128,"Game")
-
-
-
