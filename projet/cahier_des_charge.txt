@@ -18,7 +18,7 @@ par l'achat d'objets et armes
 
 -------------
 Jouabilité:
-- multijoueur(jamais de la vie) + 
+- multijoueur (jamais de la vie) + 
 - manette pour plus de maniabilité dans les commandes (bonus)
 
 
