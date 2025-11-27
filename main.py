@@ -1,4 +1,3 @@
-
 import pyxel
 
 
@@ -94,6 +93,7 @@ class Mob:
     def degat(self):
         """change la vie du mob"""
         pass
+
 
 
 
