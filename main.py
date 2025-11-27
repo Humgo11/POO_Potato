@@ -5,69 +5,47 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
     def __init__(self,width,height,nom_jeu):
         self.width = width
         self.height = height
-        self.nom = nom_jeu
+        self.nom = "Potato"
+        self.player = Player("JOUEUR1")
+        self.x = 0
+        self.y = 0
         
+         
 
         pyxel.init(self.width, self.height)
-        self.player = Player("JOUEUR1")
+        
         pyxel.run(self.update, self.draw)
+        list_mob = []
         
 
     def update(self):
         
         if self.player.is_alive(): # boucle du jeu qui verifie si le joueur est mort
             #ici si le player est vivant
-            #mettre la suite du jeu ici
-            self.player.move()
+            pass #mettre la suite du jeu ici
 
 
 
         else:#si le joueur est mort
-            print(self.player.nom, "est mort")
+            print(self.player.nom, "est mort...")
 
-
+        
 
     def draw(self):
         pyxel.cls(0)
-        self.player.draw()
+        
+        
 
 
 
 class Player: #classe qui cree le joueur
     def __init__(self,nom):
         self.nom = nom
-        self.x = pyxel.width//2 -2
-        self.y = pyxel.height//2 -2
+        self.x = 0
+        self.y = 0
         self.defense = 0
         self.attaque = 1
         self.vie = 4 #vie initiale
-        self.vitesse = 1 #vitesse de deplacement 
-
-    def move(self):
-        """déplacement avec les touches de direction"""
-        
-        if pyxel.btn(pyxel.KEY_RIGHT):
-            
-            if (self.x < pyxel.width-5) :#eviter de sortir de l'écran
-                self.x = self.x + self.vitesse
-
-        if pyxel.btn(pyxel.KEY_LEFT):
-            if (self.x > 0) :
-                self.x = self.x - self.vitesse
-                
-
-        if pyxel.btn(pyxel.KEY_DOWN):
-            if (self.y < pyxel.height-5) :
-                self.y = self.y + self.vitesse
-        if pyxel.btn(pyxel.KEY_UP):
-            if (self.y > 0) : 
-                self.y = self.y - self.vitesse
-
-        
-
-        
-
-        
 
 
     def degats(self,nb_degats):
@@ -87,11 +65,34 @@ class Player: #classe qui cree le joueur
         
         else:
             return False
-
+        
+    def draw_health(self):
+        for i in range(self.vie):
+            pyxel.rect(8*i, 0, 8, 8, 1+i)
+            # pyxel.blt(x, y, img, u, v, w, h)
+        
+        
+        
     def draw(self):
-        pyxel.rect(self.x,self.y,5,5,6)
+        pass
 
-
+class Mob:
+    def __init__(self, life, damage, attack_speed, speed):
+        """initialisation de la creation de mob"""
+        self.life = life
+        self.damage = damage
+        self.attack_speed = attack_speed
+        self.speed = speed
+    
+    def update(self):
+        pass
+    
+    def draw(self):
+        pass
+    
+    def degat(self):
+        """change la vie du mob"""
+        pass
 
 
 
