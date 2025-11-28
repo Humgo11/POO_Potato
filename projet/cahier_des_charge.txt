@@ -8,7 +8,7 @@ idee provenant de brotato: https://store.steampowered.com/app/1942280/Brotato/
 Le But du jeu:
 Un personnage devra survivre à des vagues d'ennemis de plus en plus puissantes.
 A chaque vagues les ennemis auront plus de vie et feront plus de degats
-des mobs réapparaissent jusqu'à ce que le timer de la vague se soit écoulée
+des mobs réapparaissent jusqu'à ce que le timer de la vague se soit écoulé
 ou que le joueur perde.
 
 Si on a le temps:
