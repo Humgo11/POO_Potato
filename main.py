@@ -18,7 +18,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
     def update(self):
         if  self.menu_principal.is_showed:
-            if pyxel.btn(pyxel.KEY_ALT):
+            if pyxel.btn(pyxel.KEY_RETURN) or pyxel.btn(pyxel.KEY_KP_ENTER):
                 self.menu_principal.is_showed = False
 
         
