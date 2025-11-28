@@ -6,6 +6,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         self.width = width
         self.height = height
         self.nom = nom_jeu
+        self.hitbox = True
         
 
         pyxel.init(self.width, self.height)
@@ -29,7 +30,12 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
     def draw(self):
         pyxel.cls(0)
+        
+        if self.hitbox:
+            self.player.draw_hitbox()
+
         self.player.draw()
+            
 
 
 
@@ -68,7 +74,8 @@ class Player: #classe qui cree le joueur
         
 
         
-
+    def draw_hitbox(self):
+        pyxel.rect(self.x-1,self.y-1,7,7,9) #7= taille player + 2 pour que l'on voie un peu le rectangle
 
     def degats(self,nb_degats):
         """
