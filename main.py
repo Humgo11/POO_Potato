@@ -10,31 +10,44 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         
 
         pyxel.init(self.width, self.height)
+        self.menu_principal = Menu()
+        
         self.player = Player("JOUEUR1")
         pyxel.run(self.update, self.draw)
         
 
     def update(self):
+        if  self.menu_principal.is_showed:
+            if pyxel.btn(pyxel.KEY_ALT):
+                self.menu_principal.is_showed = False
+
         
-        if self.player.is_alive(): # boucle du jeu qui verifie si le joueur est mort
-            #ici si le player est vivant
-            #mettre la suite du jeu ici
-            self.player.move()
+        else:
+            if self.player.is_alive(): # boucle du jeu qui verifie si le joueur est mort
+                #ici si le player est vivant
+                #mettre la suite du jeu ici
+                self.player.move()
 
 
 
-        else:#si le joueur est mort
-            print(self.player.nom, "est mort")
+            else:#si le joueur est mort
+                print(self.player.nom, "est mort")
 
 
 
     def draw(self):
         pyxel.cls(0)
-        
-        if self.hitbox:
-            self.player.draw_hitbox()
+        if self.menu_principal.is_showed:
 
-        self.player.draw()
+            self.menu_principal.draw()
+            
+            
+
+        else:
+            if self.hitbox:
+                self.player.draw_hitbox()
+
+            self.player.draw()
             
 
 
@@ -130,6 +143,34 @@ class Mob:
         pass
 
 
+class Menu:
+    def __init__(self):
+        self.liste_textes = [] #forme = [x,y,"texte"] : {"x":x, "y":y, "texte":"texte"}
+        self.is_showed = True
+        self.ajouter_textes(0,0,"Bienvenue")
+
+
+
+    def ajouter_textes(self,x:int=0,y:int=0, texte : str=""):
+        temp = {
+            "x":x,
+            "y":y,
+            "texte":texte
+        }
+        self.liste_textes.append(temp)
+
+
+    
+    def draw(self):
+        for v in self.liste_textes:
+            pyxel.text(v["x"], v["y"], v["texte"],7)
+            
+
+        
+
+
+
+    
 
 
 Game(128,128,"JEU")
