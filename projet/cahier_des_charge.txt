@@ -45,3 +45,12 @@ de probleme en l'implémentant au code principal
 
 
 
+
+Gameplay:
+-> cbien d'armes max on peut avoir? 1seule ou plusieurs
+si une seule arme, les autres sont stockées dans un tableau et inutilisable
+pendant une vague
+
+
+
+

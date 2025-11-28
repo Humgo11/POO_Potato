@@ -9,6 +9,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         
 
         pyxel.init(self.width, self.height)
+        # self.liste_arme = [Armes("Tourbillon", 12, 2, 0.40, 0,0)]
         self.player = Player("JOUEUR1")
         pyxel.run(self.update, self.draw)
         
@@ -25,13 +26,39 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         else:#si le joueur est mort
             print(self.player.nom, "est mort")
 
-
-
+        
+        
+    
+    
     def draw(self):
         pyxel.cls(0)
         self.player.draw()
+        
 
-
+class Armes:
+    def __init__(self, nom, degats, cooldown, critical_hit, x, y):
+        """cooldown: temps avant prochaine attaque
+        critical_hit -> en %"""
+        #pas encore appellée
+        self.nom = nom
+        self.x = x
+        self.y = y
+        self.degats = degats
+        self.cooldown = cooldown
+        self.critical_hit = critical_hit
+        
+    def update(self):
+        self.x = Player.x
+        self.y = Player.y
+    
+    def draw(self):
+        pyxel.rect(self.x, self.y, 2, 4, 9)
+    
+    
+    
+    def abilite(self):
+        """l'arme a une proba d'avoir compétence spéciale"""
+        pass
 
 class Player: #classe qui cree le joueur
     def __init__(self,nom):
@@ -42,6 +69,7 @@ class Player: #classe qui cree le joueur
         self.attaque = 1
         self.vie = 4 #vie initiale
         self.vitesse = 1 #vitesse de deplacement 
+        
 
     def move(self):
         """déplacement avec les touches de direction"""
