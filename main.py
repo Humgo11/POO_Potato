@@ -12,6 +12,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
         pyxel.init(self.width, self.height)
         self.player = Player("JOUEUR1")
+        self.liste_mob = []
         pyxel.run(self.update, self.draw)
         
 
@@ -22,12 +23,16 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
             #mettre la suite du jeu ici
             self.player.move()
             
-            
-            
-
-
         else:#si le joueur est mort
             print(self.player.nom, "est mort")
+            
+        #test de la mort des Mobs
+        for mobs in self.liste_mob:
+            if mobs.is_alive() == True:
+                self.liste_mob.remove(mobs)
+
+
+        
             
             
         
@@ -54,24 +59,25 @@ class Player: #classe qui cree le joueur
         self.attaque = 1
         self.vie = 4 #vie initiale
         self.vitesse = 1 #vitesse de deplacement 
+        self.regeneration = 1#% de vie par secondes
 
     def move(self):
         """déplacement avec les touches de direction"""
         
-        if pyxel.btn(pyxel.KEY_RIGHT):
+        if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.KEY_D):
             
             if (self.x < pyxel.width-5) :#eviter de sortir de l'écran
                 self.x = self.x + self.vitesse
 
-        if pyxel.btn(pyxel.KEY_LEFT):
+        if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.KEY_Q):
             if (self.x > 0) :
                 self.x = self.x - self.vitesse
                 
 
-        if pyxel.btn(pyxel.KEY_DOWN):
+        if pyxel.btn(pyxel.KEY_DOWN) or pyxel.btn(pyxel.KEY_S):
             if (self.y < pyxel.height-5) :
                 self.y = self.y + self.vitesse
-        if pyxel.btn(pyxel.KEY_UP):
+        if pyxel.btn(pyxel.KEY_UP) or pyxel.btn(pyxel.KEY_Z):
             if (self.y > 0) : 
                 self.y = self.y - self.vitesse
 
@@ -136,6 +142,14 @@ class Mob:
     def degat(self):
         """change la vie du mob"""
         pass
+    
+    def is_alive(self):
+        """donne de l'or au joueur et disparaitsi false"""
+        if self.life > 0:
+            return True
+        elif self.life <= 0:
+            return False
+        
 
 
 """si joueur quitte la partie par le menu copier coller ça
