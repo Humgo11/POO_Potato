@@ -8,13 +8,14 @@ idee provenant de brotato: https://store.steampowered.com/app/1942280/Brotato/
 Le But du jeu:
 Un personnage devra survivre à des vagues d'ennemis de plus en plus puissantes.
 A chaque vagues les ennemis auront plus de vie et feront plus de degats
-des mobs réapparaissent jusqu'à ce que le timeur de la vague soit écoulé
-ou que le joueuer n'a plus de vie
+des mobs réapparaissent jusqu'à ce que le timer de la vague se soit écoulé
+ou que le joueur perde.
 
 Si on a le temps:
-Pour contrebalancer cela le nombre d'ennemi tué rapportera de l'XP au 
+-Pour contrebalancer cela le nombre d'ennemi tué rapportera de l'XP au 
 joueur qui pourra alors améliorer son équipement (defense, attaque)
 par l'achat d'objets et armes
+-Easter Egg
 
 -------------
 Jouabilité:
@@ -34,7 +35,7 @@ Répartitions des taches:
 -Créations sons
 -Création rooms des vagues
 -Création ennemis
--Création menus 
+-Création menus (Quentin)
 
 
 !!! REGLES COMMIT !!!
