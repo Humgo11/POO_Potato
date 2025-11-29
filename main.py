@@ -1,4 +1,5 @@
 import pyxel
+import webbrowser
 
 
 class Game: #classe qui cree le jeu et qui possede la boucle de jeu
@@ -20,11 +21,16 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
             #ici si le player est vivant
             #mettre la suite du jeu ici
             self.player.move()
-
+            
+            
+            
 
 
         else:#si le joueur est mort
             print(self.player.nom, "est mort")
+            
+            
+        
 
 
 
@@ -95,6 +101,8 @@ class Player: #classe qui cree le joueur
         else:
             return False
 
+
+
     def draw(self):
         pyxel.rect(self.x,self.y,5,5,6)
         self.draw_health()
@@ -130,6 +138,7 @@ class Mob:
         pass
 
 
-
-
+"""si joueur quitte la partie par le menu copier coller ça
+ATTENTION: NE PAS METTRE DANS UNE BOUCLE"""
+#webbrowser.open_new("https://www.youtube.com/watch?v=xvFZjo5PgG0")
 Game(128,128,"JEU")
