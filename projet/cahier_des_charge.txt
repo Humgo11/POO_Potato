@@ -35,6 +35,7 @@ Répartitions des taches:
 -Création rooms des vagues
 -Création ennemis(commencé-Hugo)
 -Création menus (Quentin-arrete)
+-Création collisions (Quentin)
 
 TODO:
 -> régler le fait que l'on puisse aller plus vite en diagonale
