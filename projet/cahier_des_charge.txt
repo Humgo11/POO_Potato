@@ -1,24 +1,24 @@
+Objectifs:
+
+1. Créer une application
+2. Interactions utilisateur
+3. Des acteurs multiples
+4. Gérer des collisions
+5. Utiliser des images
+6. Utiliser des sons -> à passer car ne fonctionne pas !
+7. Décors et scrolling
 
 
 
-Nom projet : POTATO
-idee provenant de brotato: https://store.steampowered.com/app/1942280/Brotato/
 
+Bonus:
 
-Le But du jeu:
-Un personnage devra survivre à des vagues d'ennemis de plus en plus puissantes.
-A chaque vagues les ennemis auront plus de vie et feront plus de degats
-des mobs réapparaissent jusqu'à ce que le timer de la vague se soit écoulé
-ou que le joueur perde.
-
-Si on a le temps:
 -Pour contrebalancer cela le nombre d'ennemi tué rapportera de l'XP au 
 joueur qui pourra alors améliorer son équipement (defense, attaque, vitesse)
 par l'achat d'objets et armes
--Easter Egg
 
--------------
-Jouabilité:
+-Easter Egg(lien vers youtube rickroll voir dernières ligne du code)
+
 - multijoueur (jamais de la vie) + 
 - manette pour plus de maniabilité dans les commandes (bonus)
 
@@ -28,20 +28,34 @@ Les DEVS :
 Quentin, Hugo, Felix, Gaetan
 
 
-
 Répartitions des taches:
 
 -Creation des textures : ennemis, player,sol,balles,pv,
 -Créations sons
 -Création rooms des vagues
--Création ennemis
+-Création ennemis(commencé-Hugo)
 -Création menus (Quentin)
+
+TODO:
+-> régler le fait que l'on puisse aller plus vite en diagonale
+-> rickroll(2lignes de code à la fin du jeu)
 
 
 !!! REGLES COMMIT !!!
 Un COMMIT sans commentaires / non comprehensible ne sera pas accepté.
 Il faut commit un code seulement si on est sur qu'il marche et qu'il n'y aura pas
 de problèmes en l'implémentant au code principal.
+
+
+
+
+
+Gameplay:
+-> cbien d'armes max on peut avoir? 1seule ou plusieurs
+si une seule arme, les autres sont stockées dans un tableau et inutilisable
+pendant une vague
+
+
 
 
 
