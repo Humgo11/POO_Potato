@@ -49,6 +49,30 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
             
 
 
+class Armes:
+    def __init__(self, nom, degats, cooldown, critical_hit, x, y):
+        """cooldown: temps avant prochaine attaque
+        critical_hit -> en %"""
+        #pas encore appellée
+        self.nom = nom
+        self.x = x
+        self.y = y
+        self.degats = degats
+        self.cooldown = cooldown
+        self.critical_hit = critical_hit
+        
+    def update(self):
+        self.x = Player.x
+        self.y = Player.y
+    
+    def draw(self):
+        pyxel.rect(self.x, self.y, 2, 4, 9)
+    
+    
+    
+    def abilite(self):
+        """l'arme a une proba d'avoir compétence spéciale"""
+        pass
 
 class Player: #classe qui cree le joueur
     def __init__(self,nom):
@@ -60,16 +84,19 @@ class Player: #classe qui cree le joueur
         self.vie = 4 #vie initiale
         self.vitesse = 1 #vitesse de deplacement 
         self.regeneration = 1#% de vie par secondes
+        self.liste_arme_joueur = [Armes("Orbe tourbillonante", 10, 2,0.5,self.x, self.y)]
+        self.arme = [0]#identifiant des armes utilisés
 
     def move(self):
         """déplacement avec les touches de direction"""
         
         if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.KEY_D):
-            
+            self.orientation("d")
             if (self.x < pyxel.width-5) :#eviter de sortir de l'écran
                 self.x = self.x + self.vitesse
 
         if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.KEY_Q):
+            self.orientation("g")
             if (self.x > 0) :
                 self.x = self.x - self.vitesse
                 
@@ -81,9 +108,18 @@ class Player: #classe qui cree le joueur
             if (self.y > 0) : 
                 self.y = self.y - self.vitesse
 
+    def orientation(self, cote):
+        """renvoie le cote que le personnage va: par exemple touche gauche -> gauche
+        gère l'orientation du personnage"""
+        if cote == 'g':
+            #x -> -x
+            pass
+        elif cote == "d":
+            #-x -> x
+            pass
         
 
-        
+    
 
         
     def draw_hitbox(self):
