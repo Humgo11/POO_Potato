@@ -13,6 +13,7 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         pyxel.init(self.width, self.height)
         self.player = Player("JOUEUR1")
         self.liste_mob = []
+        self.liste_arme = [Armes("Orbe tourbillonante", 10, 2,0.5,"epee"),Armes("Epee du debutant",1,2, 0.20,"epee")]#liste des armes déblocables
         pyxel.run(self.update, self.draw)
         
 
@@ -30,8 +31,13 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         for mobs in self.liste_mob:
             if mobs.is_alive() == True:
                 self.liste_mob.remove(mobs)
-
-
+                
+        # update des balles de l'arc:
+            #...
+            
+        self.player.arme_active.update_attaque()
+         
+       
         
             
             
@@ -47,26 +53,44 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
         self.player.draw()
             
+            
 
 
 class Armes:
-    def __init__(self, nom, degats, cooldown, critical_hit, x, y):
+    def __init__(self, nom, degats, cooldown, critical_hit, type_arme):
         """cooldown: temps avant prochaine attaque
         critical_hit -> en %"""
         #pas encore appellée
         self.nom = nom
-        self.x = x
-        self.y = y
         self.degats = degats
         self.cooldown = cooldown
         self.critical_hit = critical_hit
-        
+        self.type_arme = type_arme
+        self.liste_attaque_actives = []    
+    
+    
+    def creer_attaque(self, x,y,cote, vitesse):
+        if self.type_arme == "arc":
+            if cote == "g":
+                self.liste_attaque_actives.append([x -vitesse, y+4, 2, 1, cote])#x,y,w,h, cote
+                
+    def update_attaque(self):
+        for att in self.liste_attaque_actives:
+            if att[4] == "g" and pyxel.frame_count % 4 == 0:
+                att[0] -= 2
+                
+            
     def update(self):
-        self.x = Player.x
-        self.y = Player.y
+        pass
+            
+    
+    # def caracteristique(self):
+    #     return[self.nom, self.degats, self.cooldown, self.critical_hit, self.type_arme]
     
     def draw(self):
-        pyxel.rect(self.x, self.y, 2, 4, 9)
+        # pyxel.rect(self.x, self.y, 2, 4, 9)
+        for lst in self.liste_attaque_actives:
+            pyxel.rect(lst[0], lst[1], 2, 1, 2)
     
     
     
@@ -82,21 +106,37 @@ class Player: #classe qui cree le joueur
         self.defense = 0
         self.attaque = 1
         self.vie = 4 #vie initiale
-        self.vitesse = 1 #vitesse de deplacement 
+        self.vitesse = 1 #vitesse de deplacement
+        
         self.regeneration = 1#% de vie par secondes
-        self.liste_arme_joueur = [Armes("Orbe tourbillonante", 10, 2,0.5,self.x, self.y)]
-        self.arme = [0]#identifiant des armes utilisés
-
+        self.liste_arme_joueur = [Armes("Arc du débutant", 1, 2, 0.1, "arc")]#liste des armes possédées apr joueur
+        self.arme_active = self.liste_arme_joueur[0]#arme utilisé par le joueur
+        self.cote = "g"#va a gauche
+        
+        
+    def ajouter_arme(self, num):
+        """ajoute une arme aux armes possédées par le joueur"""
+        self.liste_arme_joueur.append(Game.liste_arme[num])
+        print("ajout de l'arme", Game.liste_arme[num])
+    
+                
+    
+        
+                
+    
+    
+    
+        
     def move(self):
         """déplacement avec les touches de direction"""
-        
+        # TODO: gerer l'orientation du perso
         if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.KEY_D):
-            self.orientation("d")
+            
             if (self.x < pyxel.width-5) :#eviter de sortir de l'écran
                 self.x = self.x + self.vitesse
 
         if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.KEY_Q):
-            self.orientation("g")
+            
             if (self.x > 0) :
                 self.x = self.x - self.vitesse
                 
@@ -107,16 +147,21 @@ class Player: #classe qui cree le joueur
         if pyxel.btn(pyxel.KEY_UP) or pyxel.btn(pyxel.KEY_Z):
             if (self.y > 0) : 
                 self.y = self.y - self.vitesse
-
-    def orientation(self, cote):
+                
+        if pyxel.btn(pyxel.KEY_SPACE):
+            self.arme_active.creer_attaque(self.x, self.y,self.cote, self.vitesse)        
+        
+    def orientation(self):
         """renvoie le cote que le personnage va: par exemple touche gauche -> gauche
         gère l'orientation du personnage"""
-        if cote == 'g':
+        
+        if self.cote == 'g':
             #x -> -x
             pass
-        elif cote == "d":
+        elif self.cote == "d":
             #-x -> x
             pass
+        
         
 
     
@@ -148,6 +193,8 @@ class Player: #classe qui cree le joueur
     def draw(self):
         pyxel.rect(self.x,self.y,5,5,6)
         self.draw_health()
+        self.arme_active.draw()
+             
 
     def draw_health(self):
        """affiche le nb de coeur restant en haut à gauche """
