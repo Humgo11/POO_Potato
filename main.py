@@ -11,6 +11,8 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         
 
         pyxel.init(self.width, self.height)
+        self.menu_principal = Menu()
+        
         self.player = Player("JOUEUR1")
         self.liste_mob = []
         self.liste_arme = [Armes("Orbe tourbillonante", 10, 2,0.5,"epee"),Armes("Epee du debutant",1,2, 0.20,"epee")]#liste des armes déblocables
@@ -18,6 +20,10 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
         
 
     def update(self):
+        if  self.menu_principal.is_showed:
+            if pyxel.btn(pyxel.KEY_RETURN) or pyxel.btn(pyxel.KEY_KP_ENTER):
+                self.menu_principal.is_showed = False
+
         
         if self.player.is_alive(): # boucle du jeu qui verifie si le joueur est mort
             #ici si le player est vivant
@@ -47,11 +53,17 @@ class Game: #classe qui cree le jeu et qui possede la boucle de jeu
 
     def draw(self):
         pyxel.cls(0)
-        
-        if self.hitbox:
-            self.player.draw_hitbox()
+        if self.menu_principal.is_showed:
 
-        self.player.draw()
+            self.menu_principal.draw()
+            
+            
+
+        else:
+            if self.hitbox:
+                self.player.draw_hitbox()
+
+            self.player.draw()
             
             
 
@@ -233,6 +245,36 @@ class Mob:
         elif self.life <= 0:
             return False
         
+
+
+class Menu:
+    def __init__(self):
+        self.liste_textes = [] #forme = [x,y,"texte"] : {"x":x, "y":y, "texte":"texte"}
+        self.is_showed = True
+        self.ajouter_textes(0,0,"Bienvenue")
+
+
+
+    def ajouter_textes(self,x:int=0,y:int=0, texte : str=""):
+        temp = {
+            "x":x,
+            "y":y,
+            "texte":texte
+        }
+        self.liste_textes.append(temp)
+
+
+    
+    def draw(self):
+        for v in self.liste_textes:
+            pyxel.text(v["x"], v["y"], v["texte"],7)
+            
+
+        
+
+
+
+    
 
 
 """si joueur quitte la partie par le menu copier coller ça
